@@ -1,1 +1,66 @@
-GET  https://chrissho97-fuzzy-yodel-px5j79jg4v7f7w4w-8080.preview.app.github.dev/
+@server=  https://chrissho97-fuzzy-yodel-px5j79jg4v7f7w4w-8080.preview.app.github.dev
+
+###
+
+GET {{server}}
+
+###
+
+GET {{server}}/cursos
+
+###
+#crear los registros y 201 fue creado
+
+POST {{server}}/cursos
+Content-Type: application/json
+
+{"nombre": "Compiladores 2" , "creditos": 5}
+
+
+###
+#seleccionar el id que se quiera mostrar
+GET {{server}}/cursos/1
+
+
+###
+#Editar el registro y 204 que se edito
+PATCH {{server}}/cursos/1
+Content-Type: application/json
+
+{"nombre": "Algoritmos"}
+
+###
+#Se puede poner el tamaño de la pagina y cambiar de pagina
+GET {{server}}/cursos?size=2&page=3
+
+###
+#ordenar dependiendo del campo seleccionado
+
+GET {{server}}/cursos?size=2&page=0&sort=creditos,desc
+
+###
+GET {{server}}/cursos?size=2&page=1&sort=creditos,desc
+
+###
+GET {{server}}/cursos/search/findByNombre?nombre=Algoritmos
+
+###
+
+GET {{server}}/carreras
+###
+POST {{server}}/carreras
+Content-Type: application/json
+
+{"nombre": "Marketing"}
+
+
+###
+
+#Se relacion con curso
+GET {{server}}/carreras/2/cursos
+
+###
+GET {{server}}/carreras/1/cursos
+
+###
+GET {{server}}/cursos/4/carrera
